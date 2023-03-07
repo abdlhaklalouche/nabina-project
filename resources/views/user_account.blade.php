@@ -17,6 +17,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
+            <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,11 @@
                 <td><strong class="text-primary">{{ $user->first_name }} {{ $user->last_name }}</strong></td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->role() }}</td>
+                <td>
+                    <a href="{{ route('user_account_update', ['id' => $user->id ]) }}">Update</a>
+                     - 
+                     <a href="{{ route('user_account_delete', ['id' => $user->id ]) }}">Delete</a>
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -15,7 +15,7 @@
     
         <ul class="list-group list-group-flush">
         <li class="list-group-item text-center bg-transparent p-4">
-            <h4>System admin dashboard</h4>
+            <h4>{{ auth()->user()->role() }} dashboard</h4>
         </li>
         @if(auth()->user()->role == 2)
             <a href="{{ route('user_account') }}" class="list-group-item bg-transparent text-center list-group-item-action">User Account</a>

@@ -45,9 +45,14 @@ Route::middleware(["auth"])->group(function() {
         Route::middleware(["auth.admin"])->group(function() {
 
             Route::get('/user-account', [App\Http\Controllers\DashboardController::class, 'user_account_get'])->name('user_account');
+            
             Route::get('/user-account/new', [App\Http\Controllers\DashboardController::class, 'user_account_new'])->name('user_account_new');
             Route::post('/user-account/new', [App\Http\Controllers\DashboardController::class, 'user_account_store']);
+            
+            Route::get('/user-account/update/{id}', [App\Http\Controllers\DashboardController::class, 'user_account_view'])->name('user_account_update');
+            Route::post('/user-account/update/{id}', [App\Http\Controllers\DashboardController::class, 'user_account_update']);
 
+            Route::get('/user-account/delete/{id}', [App\Http\Controllers\DashboardController::class, 'user_account_delete'])->name('user_account_delete');
         });
 
     });
