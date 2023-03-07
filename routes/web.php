@@ -18,7 +18,18 @@ use Illuminate\Support\Facades\Route;
  */
 Route::middleware(["guest"])->group(function() {
 
-    Auth::routes(['register' => false, "verify" => false]);
+    Auth::routes([
+        'register' => false,
+        "verify" => false,
+        "reset" => false
+    ]);
+
+    
+    Route::get('/reset_password', [App\Http\Controllers\Auth\CustomAuthController::class, 'reset_password'])->name('reset_password');
+    Route::post('/reset_password', [App\Http\Controllers\Auth\CustomAuthController::class, 'reset_password_send']);
+
+    Route::get('/change_password/{token}', [App\Http\Controllers\Auth\CustomAuthController::class, 'change_password'])->name('change_password');
+    Route::post('/change_password/{token}', [App\Http\Controllers\Auth\CustomAuthController::class, 'change_password_send']);
 
 });
 

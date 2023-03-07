@@ -6,13 +6,15 @@
         <div class="col-md-8 py-5">
             <h1 class="text-center pb-5"><strong>{{ __('RESET PASSWORD') }}</strong></h1>
 
-            @if (session('status'))
+            @if (session('token'))
                 <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
+                    In real life app this link below will be sent to your email
+                    <br>
+                    <a href="{{ route('change_password', ['token' => session('token')]) }}">{{ route('change_password', ['token' => session('token')]) }}</a>
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('password.email') }}">
+            <form method="POST" action="{{ route('reset_password') }}">
                 @csrf
 
                 <div class="row mb-3">
